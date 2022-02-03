@@ -1,0 +1,22 @@
+<%- include('parts/top.ejs')%>
+<section class="card_container">
+  <div class="titre">
+    <h2 class="titre-texte"><span>M</span>enu</h2>
+    <p>
+      These are the most delicious dishes prepared with love by our top chefs.
+      (check out our experts)
+    </p>
+  </div>
+  <% for(let prod of products) {%>
+  <div class="card">
+    <div class="card_img">
+      <img src="upload/<%= prod.img%>" />
+    </div>
+    <h2><%= prod.titel %></h2>
+    <p><%= prod.description %></p>
+    <h4><%= prod.price %>$</h4>
+  </div>
+  <% } %>
+</section>
+<section class="temoignage" id="temoignage"></section>
+<%- include('parts/footer.ejs')%>

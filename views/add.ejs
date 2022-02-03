@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Food House</title>
+  </head>
+  <body>
+    <header class="head_sg">
+      <a href="/" class="logo_sg"><span>F</span>ooD<span>H</span>ouse</a>
+
+      <ul class="navbar_sg">
+        <li><a href="/product">Delete Product</a></li>
+        <li><a href="/add">Add product</a></li>
+        <li><a href="/signin">Sign out</a></li>
+      </ul>
+    </header>
+
+    <div class="titre">
+      <h2 class="titre-texte"><span>Add</span> products</h2>
+    </div>
+    <form class="contactform" method="post" action="/add">
+      <h3>Add your new products</h3>
+      <div class="inputboite">
+        <input type="text" name="img" placeholder="Product tmg" />
+      </div>
+      <div class="inputboite">
+        <input type="text" name="titel" placeholder="Product titel " />
+      </div>
+      <div class="inputboite">
+        <textarea
+          name="description"
+          placeholder="Product Description"
+        ></textarea>
+      </div>
+      <div class="inputboite">
+        <input type="number" name="price" placeholder="product price" />
+      </div>
+      <div class="inputadd">
+        <input type="submit" value="Add " />
+      </div>
+    </form>
+    <%- include('parts/footer.ejs')%>
+  </body>
+</html>

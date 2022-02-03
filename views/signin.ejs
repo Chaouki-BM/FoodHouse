@@ -1,0 +1,24 @@
+<%- include('parts/top.ejs')%>
+<div class="titre noir">
+  <h2 class="signin-texte"><span>S</span>ing In</h2>
+  <p>Only for admins</p>
+</div>
+<div class="contactform">
+  <form method="post" action="/signin">
+    <% if(locals.err) { %>
+    <div class="alert"><%= err %></div>
+    <% } %>
+    <div class="inputboite">
+      <input type="text" name="name" placeholder="Name" />
+    </div>
+    <div class="inputboite">
+      <input type="password" name="password" placeholder="passWord" />
+    </div>
+
+    <div class="inputboite">
+      <input type="submit" value="Sign In" />
+    </div>
+  </form>
+</div>
+
+<%- include('parts/footer.ejs')%>

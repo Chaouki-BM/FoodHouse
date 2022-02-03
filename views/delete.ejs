@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Food House</title>
+  </head>
+  <body>
+    <header class="head_sg">
+      <a href="/" class="logo_sg"><span>F</span>ooD<span>H</span>ouse</a>
+
+      <ul class="navbar_sg">
+        <li><a href="/product">Delete Product</a></li>
+        <li><a href="/add" >Add product</a></li>
+        <li><a href="/signin">Sign out</a></li>
+      </ul>
+    </header>
+
+</form>
+<div class="titre_del">
+  <h2 class="titre-texte"><span>Delete</span> products</h2>
+</div>
+<section class="card_container">
+  <% for(let prod of products) {%>
+   <div class="card">
+   <div class="card_img">
+      <img src="upload/<%= prod.img%>" />
+    </div>
+    <h2><%= prod.titel %></h2>
+    <p><%= prod.description %></p>
+    <h4><%= prod.price %>$</h4>
+    <p><%= prod._id %></p>
+      <a href="/product/delete/<%= prod._id %>">Delete</a>
+   </div>
+
+  <% } %>
+</section>
+
+</body>
+<%- include('parts/footer.ejs')%>
+</html>
