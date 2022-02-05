@@ -4,25 +4,24 @@ const body = express.urlencoded({ extended: true })
 
 const mongoose = require('mongoose');
 
-// import express-session
-const mysession = require("express-session");
+var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
 
-const mongodbstor = require('connect-mongodb-session')(mysession)
-//connect mdb
-var store = mongodbstor({
+var store = new MongoDBStore({
     uri: 'mongodb://localhost:27017/foodhouse',
-    Collection: 'mysession'
+    collection: 'mySessions'
 });
-//connect
-route.use(mysession({
-    secret: 'secret key is chaouki',
+route.use(session({
+    secret: '_ts',
     cookie: {
-        maxAge: 1000 * 60 * 60 //1h
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
     },
     store: store,
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: true
 }));
+
+
 
 
 
@@ -47,8 +46,9 @@ route.post('/signin', body, (req, res, next) => {
 
     var newpromis = new Promise((resolve, reject) => {
         mongoose.connect(url).then(() => {
-            return User.find({ getsingin })
+            return User.find(getsingin)
         }).then((user) => {
+            console.log(user);
             if (user.length == 0) {
 
                 return res.render('signin', { err: 'this user not found try to check your name or password' })
@@ -56,13 +56,16 @@ route.post('/signin', body, (req, res, next) => {
             } else {
                 mongoose.disconnect()
                 res.redirect('add')
-                resolve(user[0]._id)
+                resolve(user[0].id)
+                req.session.userid = user[0].id
+
             }
         })
     })
     newpromis.then((id) => {
-        console.log(id)
-        req.session.userId = id
+        console.log(id);
+        console.log(req.session);
+
     }).catch((err) => {
         console.log(err);
     })

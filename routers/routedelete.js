@@ -52,7 +52,12 @@ route.get('/product/delete/:id', (req, res) => {
     })
 })
 
+route.get('/sign_out', (req, res, next) => {
+    req.session.destroy(() => {
+        res.redirect('/signin')
+    })
 
+})
 
 
 

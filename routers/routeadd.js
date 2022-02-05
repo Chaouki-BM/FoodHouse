@@ -31,6 +31,12 @@ route.post("/add", body, (req, res, next) => {
     res.render('add')
 
 })
+route.get('/sign_out', (req, res, next) => {
+    req.session.destroy(() => {
+        res.redirect('/signin')
+    })
+
+})
 
 
 module.exports = route
